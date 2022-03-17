@@ -1,0 +1,29 @@
+# POST http://localhost:5000/api/accounts/forget-password
+# Content-type: application/json
+
+# {
+#     "email": "lucifermorninstar@outlook.com"
+# }
+
+
+# POST http://localhost:5000/api/accounts/request-account-access
+# Content-type: application/json
+
+# {
+#     "email": "lucifermorninstar@outlook.com",
+#     "password": "Ahddi@1234"
+# }
+
+# POST http://localhost:5000/api/auth/login
+# Content-type: application/json
+
+# {
+#     "email": "abhirama.06.m@outlook.com",
+#     "password": "Abhi@2006"
+# }
+
+
+# GET http://localhost:5000/api/users/notifications
+# Content-type: application/json
+# authToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImlhdCI6MTYzMzYxNTI5MSwiZXhwIjoxNjM2MjA3MjkxfQ.07iYbm74yolftaPsMMlxZa09gFVWiHlcYsmY83pZQso
+

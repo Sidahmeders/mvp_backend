@@ -1,0 +1,449 @@
+{
+  "base_route": "/api",
+  "routes": [
+    {
+      "name": "auth",
+      "base_route": "/auth",
+      "routes": [
+        {
+          "name": "login",
+          "method": "POST",
+          "base_route": "/login",
+          "middleware": ["sanitizeLogin", "validate"],
+          "body": {
+            "email": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "password": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": [
+            {
+              "cookie_name": "authToken",
+              "type": "jwt"
+            },
+            "userObject"
+          ]
+        },
+        {
+          "name": "register",
+          "method": "POST",
+          "base_route": "/register",
+          "middleware": ["sanitizeRegister", "validate"],
+          "body": {
+            "firstName": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "lastName": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "email": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "password": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "mobile": {
+              "type": "string",
+              "required": false,
+              "min": 1,
+              "max": 255
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "base_route": "/user",
+      "routes": [
+        {
+          "savedPosts": {
+            "name": "savedPosts",
+            "method": "GET",
+            "base_route": "/savedPosts",
+            "middlewares": ["isAuthenticated"],
+            "headers": ["cookie"],
+            "response": ["posts"]
+          },
+          "notifications": {
+            "name": "notifications",
+            "method": "GET",
+            "base_route": "/notifications",
+            "middlewares": ["isAuthenticated"],
+            "headers": ["cookie"],
+            "response": ["notifications"]
+          }
+        }
+      ]
+    },
+    {
+      "name": "accounts",
+      "base_route": "/accounts",
+      "routes": [
+        {
+          "name": "request-account-access",
+          "method": "POST",
+          "base_route": "/request-account-access",
+          "body": {
+            "email": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["errorMsg"]
+        },
+        {
+          "name": "verify-account",
+          "method": "GET",
+          "base_route": "/verify/:token",
+          "response": ["errorMsg"]
+        },
+        {
+          "name": "forgot-password",
+          "method": "POST",
+          "base_route": "/forget-password",
+          "body": {
+            "email": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["errorMsg"]
+        },
+        {
+          "name": "reset-password",
+          "method": "POST",
+          "base_route": "/reset-password/:token",
+          "body": {
+            "password": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "password2": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["successMsg", "errorMsg"]
+        }
+      ]
+    },
+    {
+      "name": "cliques",
+      "base_route": "/cliques",
+      "routes": [
+        {
+          "name": "create",
+          "method": "POST",
+          "base_route": "/create",
+          "middlewares": ["isAuthenticated"],
+          "headers": ["cookie"],
+          "body": {
+            "title": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "type": {
+              "type": "enum",
+              "required": true,
+              "values": ["public", "private"]
+            },
+            "subModerator_id": {
+              "type": "string",
+              "required": true
+            }
+          },
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "name": "get",
+          "method": "GET",
+          "base_route": ["/", "/searchTerm"],
+          "middlewares": ["getUser"],
+          "headers": ["cookie"],
+          "headerOptional": true,
+          "response": ["cliques"]
+        },
+        {
+          "name": "join",
+          "method": "POST",
+          "base_route": "/join",
+          "middlewares": ["isAuthenticated"],
+          "headers": ["cookie"],
+          "body": {
+            "clique_id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "name": "leave",
+          "method": "PUT",
+          "base_route": "/leave",
+          "middlewares": ["isAuthenticated", "isMember"],
+          "headers": ["cookie"],
+          "body": {
+            "clique_id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "name": "fetchNames",
+          "base_route": "/fetchNames/movieName",
+          "response": ["movieNames"]
+        },
+        {
+          "name": "changeMod",
+          "method": "POST",
+          "base_route": "/changeMod",
+          "middlewares": ["isAuthenticated", "isModerator"],
+          "headers": ["cookie"],
+          "body": [
+            {
+              "clique_id": {
+                "type": "string",
+                "required": true,
+                "min": 1,
+                "max": 255
+              }
+            },
+            {
+              "newMod": {
+                "type": "string",
+                "required": true,
+                "min": 1,
+                "max": 255
+              }
+            }
+          ],
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "name": "changeSubMod",
+          "method": "POST",
+          "base_route": "/changeSubMod",
+          "middlewares": ["isAuthenticated", "isModerator"],
+          "headers": ["cookie"],
+          "body": [
+            {
+              "clique_id": {
+                "type": "string",
+                "required": true,
+                "min": 1,
+                "max": 255
+              }
+            },
+            {
+              "newMod": {
+                "type": "string",
+                "required": true,
+                "min": 1,
+                "max": 255
+              }
+            }
+          ],
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "name": "fetchRequest",
+          "base_route": "/fetchRequest",
+          "method": "POST",
+          "headers": ["cookie"],
+          "middlewares": ["isAuthenticated", "isModerator"],
+          "body": {
+            "clique_id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["requests"]
+        },
+        {
+          "name": "acceptRequest",
+          "base_route": "/acceptRequest",
+          "method": "POST",
+          "headers": ["cookie"],
+          "middlewares": ["isAuthenticated", "isModerator"],
+          "body": {
+            "clique_id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "name": "rejectRequest",
+          "base_route": "/rejectRequest",
+          "method": "POST",
+          "headers": ["cookie"],
+          "middlewares": ["isAuthenticated", "isModerator"],
+          "body": {
+            "id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            },
+            "clique_id": {
+              "type": "string",
+              "required": true,
+              "min": 1,
+              "max": 255
+            }
+          },
+          "response": ["successMsg", "errorMsg"]
+        },
+        {
+          "sub_route": "posts",
+          "base_route": "/:cliqueId/posts",
+          "routes": [
+            {
+              "name": "createPost",
+              "base_route": "/createPost",
+              "method": "POST",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember", "firebaseSingleMediaUpload"],
+              "body": [
+                {
+                  "title": {
+                    "type": "string",
+                    "required": true,
+                    "min": 1,
+                    "max": 255
+                  },
+                  "body": {
+                    "type": "string",
+                    "required": true,
+                    "min": 1,
+                    "max": 255
+                  }
+                }
+              ],
+              "response": ["successMsg", "errorMsg"]
+            },
+            {
+              "name": "fetchPosts",
+              "base_route": "/",
+              "method": "GET",
+              "headers": ["cookie"],
+              "middlewares": ["getUser", "isPrivate"],
+              "response": ["posts"]
+            },
+            {
+              "name": "deletePost",
+              "base_route": "/:post/delete",
+              "method": "DELETE",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember", "isOwner"],
+              "response": ["successMsg", "errorMsg"]
+            },
+            {
+              "name": "likePost",
+              "base_route": "/:post/like",
+              "method": "GET",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember"],
+              "response": ["successMsg", "errorMsg"]
+            },
+            {
+              "name": "dislikePost",
+              "base_route": "/:post/dislike",
+              "method": "GET",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember"],
+              "response": ["successMsg", "errorMsg"]
+            },
+            {
+              "name": "fetchComments",
+              "base_route": "/:post/fetchComments",
+              "method": "GET",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember"],
+              "response": ["comments"]
+            },
+            {
+              "name": "addComment",
+              "base_route": "/:post/comment",
+              "method": "POST",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember", "firebaseSingleMediaUpload"],
+              "body": [
+                {
+                  "text_comment": {
+                    "type": "string",
+                    "required": true,
+                    "min": 1,
+                    "max": 255
+                  },
+                  "is_audio": {
+                    "type": "boolean",
+                    "required": true
+                  }
+                }
+              ],
+              "response": ["successMsg", "errorMsg"]
+            },
+            {
+              "name": "savePost",
+              "base_route": "/:post/save",
+              "method": "GET",
+              "headers": ["cookie"],
+              "middlewares": ["isAuthenticated", "isMember"],
+              "response": ["comments"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+name: Node.js CI (Continuous Intergration)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+      env:
+        DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+        DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+        DATABASE_USER: ${{ secrets.DATABASE_USER }}
+        DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        SMTP_USER: ${{ secrets.SMTP_USER }}
+        SMTP_PASS: ${{ secrets.SMTP_PASS }}
+
+    - name: create env file
+      run: |
+        touch .env
+        echo -e "
+          \nDATABASE_HOST=${{ secrets.DATABASE_HOST }}
+          \nDATABASE_NAME=${{ secrets.DATABASE_NAME }}
+          \nDATABASE_USER=${{ secrets.DATABASE_USER }}
+          \nDATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+          \nJWT_SECRET=${{ secrets.JWT_SECRET }}
+          \nTMDB_API_KEY=${{ secrets.TMDB_API_KEY }}
+          \nSMTP_USER=${{ secrets.SMTP_USER }}
+          \nSMTP_PASS=${{ secrets.SMTP_PASS }}
+          " > .env
+    - run: npm i
+    # - run: npm test
+    - run: npm prune --production
+    - run: pm2 restart nodejs-apis
+

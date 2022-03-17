@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <title>Side bar Sample</title>
+    <style>
+      ::-webkit-scrollbar {
+          display: none;
+          }
+      #fixed-div {
+          background-color: #5BC65F; 
+          height: 100vh; 
+          position:fixed; 
+          overflow-y:scroll; 
+          overflow-x:hidden; 
+          top: 0; 
+          bottom: 0; 
+          left: 75%;
+          padding: 0.5%;
+      }
+      body {
+          font-family: 'Raleway', sans-serif;
+      }
+    </style>
+    <script type="text/javascript">
+      
+    </script>
+    <script src="https://kit.fontawesome.com/6544195148.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container-fluid" style="height: 100vh; margin:0;">
+        <div class="row">
+            <div class="col-9">
+                <div style="text-align: center; vertical-align: middle; line-height: 100vh;">
+                    REST OF THE WEBPAGE
+                </div>
+            </div>
+            <div class="col-3" id="fixed-div">
+                <div class="card" style="width: 100%;" style="font-family: 'Roboto', sans-serif;">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-4" style="text-align: center; padding: 0;">
+                        <img src="https://www.thefamouspeople.com/profiles/images/ryan-lewis-1.jpg" style="border-radius: 50%; width: 80px; height: 80px; object-fit: contain;">
+                        <a href="#" class="btn btn-success" style="font-size: small;">View Profile</a>
+                      </div>
+                      <div class="col-8" style="text-align: left;">
+                        <div class="row">
+                          <div class="col-9">
+                            <h5 class="card-title">Ryan Lewis</h5>
+                          </div>
+                          <div class="col-3" style="padding: 0; text-align: center;">
+                            <p style="margin: 0;">
+                              <button id="hamburgerButton" type="button" class="toggler btn btn-sm position-relative" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-bars"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                  99+
+                                  <span class="visually-hidden">unread messages</span>
+                                </span>
+                              </button>
+                            </p>
+                          </div>  
+                        </div>
+                        <h6>@ryanlewis8989</h6>
+                        <h6>76K</h6>
+                        <div><a style="font-size:small; color: grey;" href="#">240 friends</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <div id="clique" style="background-color: rgba(0,0,0,0.3); padding: 5px;">
+                  <button class="btn btn-success btn-lg w-100" data-bs-toggle="collapse" href="#createCliqueForm" role="button" aria-expanded="false" aria-controls="createCliqueForm">CREATE NEW CLIQUE</button>
+                  <div class="collapse" id="createCliqueForm">
+                    <br>
+                    <form class="form-floating" id="cliqueForm">
+                      <div class="card" style="width: 100%">
+                        <img src="https://static.wikia.nocookie.net/naruto/images/b/bb/Itachi.png/revision/latest?cb=20160125182202" class="card-img-top">
+                        <button>Change  image</button>
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-9">
+                              <h5 class="card-title">
+                                <div class="form-floating">
+                                  <input type="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required>
+                                  <label for="floatingTextarea">Clique Name</label>
+                                </div>
+                              </h5>
+                            </div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="left" title="Clique name must contain a movie name" type="button" class="col-3 btn" style="margin: 0;">
+                              <i class="fas fa-info-circle"></i>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-9">
+                              <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required></textarea>
+                                <label for="floatingTextarea">Description (100 words)</label>
+                              </div>
+                            </div>
+                            <div data-bs-toggle="tooltip" data-bs-placement="left" title="This is how the new members will understand your clique" type="button" class="col-3 btn" style="margin: 0;">
+                              <i class="fas fa-info-circle"></i>
+                            </div>
+                          </div>                         
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            <div class="form-floating">
+                              <input type="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" required>
+                              <label for="floatingTextarea">Moderator</label>
+                            </div>                           
+                          </li>
+                          <li class="list-group-item">
+                            <div class="form-floating">
+                              <input type="text" class="form-control" placeholder="Leave a comment here" id="floatingTextarea">
+                              <label for="floatingTextarea">Sub Moderator (optional)</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item">
+                            <div class="row">
+                              <div class="col-6">
+                                <div class="row">
+                                  <div class="col-9">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                      <label class="form-check-label" for="flexRadioDefault1">
+                                        Private
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div data-bs-toggle="tooltip" data-bs-placement="left" title="Only approved members can join, view, post or comment to this clique" type="button" class="col-3 btn" style="margin: 0;">
+                                    <i class="fas fa-info-circle"></i>
+                                  </div>
+                                </div>   
+                              </div>
+                              <div class="col-6">
+                                <div class="row">
+                                  <div class="col-9">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                      <label class="form-check-label" for="flexRadioDefault2">
+                                        Public
+                                      </label>
+                                    </div>
+                                  </div>
+                                  <div data-bs-toggle="tooltip" data-bs-placement="left" title="Anyone can join, view, post or comment to this clique" type="button" class="col-3 btn" style="margin: 0;">
+                                    <i class="fas fa-info-circle"></i>
+                                  </div>
+                                </div>                               
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                        <div class="card-body">
+                          <input class="btn btn-success w-100" type="submit" form="cliqueForm">
+                          <div style="height: 5px;"></div>
+                          <button type="button" class="btn-secondary btn-close w-100" aria-label="Close"  class="btn-close" type="button" data-bs-toggle="collapse" data-bs-target="#createCliqueForm" aria-expanded="false" aria-controls="createCliqueForm"></button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div style="height: 5px;"></div>
+                  <div class="accordion" id="accordionExample" style="background-color: white;">
+                    <div class="accordion-item">
+                      <h5 class="accordion-header" id="headingOne" style="font-size: small;">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <div class="row">
+                            <div class="col-4 text-center">
+                              <img src="https://i.pinimg.com/originals/28/a1/8f/28a18fe0087a2f37e9e2a543fef57836.jpg" style="border-radius: 50%; width: 80px; height: 80px; object-fit: contain; margin-top: 10px;">
+                            </div>
+                            <div class="col-8">
+                              <div class="card-header">
+                                <span>CLIQUE NAME</span>
+                                <span class="btn btn-sm" style="margin-left: 0px; font-size: small; padding: 0;">
+                                  <span><i class="fas fa-plus-circle"></i></span>
+                                  <span>JOIN</span>
+                                </span>
+                              </div>
+                              <div class="card-body" style="font-size: x-small;">
+                                <span>Members : 777</span>
+                              </div>
+                            </div>
+                          </div>
+                        </button>
+                      </h5>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <div>
+                            This is a clique. This is the description. Writing random sentences to make the text content more. Cliques are for like minded people interested in same genre or group of genres of movies and shows.
+                          </div>
+                          <div style="font-size: smaller; margin-top: 10px;">
+                            <b>MODERATOR : </b><i><a href="#">@randomusername5446</a></i>
+                          </div>
+                          <div style="margin-top: 10px; font-size: smaller;">
+                            <b>RULES</b>
+                            <ol>
+                              <li>enjoy your time here</li>
+                              <li>no cuss words</li>
+                              <li>respect everyone</li>
+                              <li>no explicit content</li>
+                              <li>should be 16+</li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="height: 3px;"></div>
+                  <div class="mb-3">
+                    <textarea placeholder="Say something..." class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div style="height: 3px;"></div>
+                  <div class="card">
+                    <div><b>Name of the user</b></div>
+                    <div style="font-size: small;"><i>Text text text .......</i></div>
+                    <img src="https://d2kektcjb0ajja.cloudfront.net/images/posts/feature_images/000/000/072/large-1466557422-feature.jpg?1466557422" style="border-radius: 2%;">
+                    <div class="row text-center">
+                      <div class="col-3">
+                        <button class="likeButton btn btn-lg"><i class="far fa-thumbs-up"></i></button>
+                      </div>
+                      <div class="col-3">
+                        <button class="dislikeButton btn btn-lg"><i class="far fa-thumbs-down"></i></button>
+                      </div>
+                      <div class="col-3">
+                        <button class="btn btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#comment-section1" aria-expanded="false" aria-controls="comment-section1"><i class="far fa-comments"></i></button>
+                      </div>
+                      <div class="col-3">
+                        <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="far fa-share-square"></i></button>
+                        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                    <div class="collapse" id="comment-section1">
+                      <div class="card card-body">
+                        <div class="input-group my-comment">
+                          <input class="form-control form-control-sm" type="text" placeholder="Make a comment!" aria-label=".form-control-sm example">
+                          <span class="input-group-text" id="basic-addon2">
+                            <button class="btn"><i class="fas fa-microphone-alt"></i></button>
+                            |
+                            <button class="btn"><i class="fas fa-smile-beam"></i></button>
+                          </span>
+                        </div>
+                        <br>
+                        <div class="comments" style="font-size: small;">
+                          <div><a href="#" style="text-decoration: none; color: inherit;"><b>Sidhu Moose Wala</b> <i>@username4321</i></a></div>
+                          <div><i>This is a random comment please like and share!</i></div>
+                          <div style="height: 5px;"></div>
+                        </div>
+                        <br>
+                        <div class="comments" style="font-size: small;">
+                          <div><a href="#" style="text-decoration: none; color: inherit;"><b>Sidhu Moose Wala</b> <i>@username4321</i></a></div>
+                          <div><i>This is a random comment please like and share!</i></div>
+                        </div>
+                        <br>
+                        <div class="comments" style="font-size: small;">
+                          <div><a href="#" style="text-decoration: none; color: inherit;"><b>Sidhu Moose Wala</b> <i>@username4321</i></a></div>
+                          <div><i class="btn btn-sm fas fa-play"></i> <img src="https://i.stack.imgur.com/qWg6J.png" style="height: 20px; width: 250px; object-fit: cover;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="height: 3px;"></div>
+                  <div class="card">
+                    <div><b>Name of the user</b></div>
+                    <div style="font-size: small;"><i>Text text text .......</i></div>
+                    <img src="https://d2kektcjb0ajja.cloudfront.net/images/posts/feature_images/000/000/072/large-1466557422-feature.jpg?1466557422" style="border-radius: 2%;">
+                    <div class="row text-center">
+                      <div class="col-3">
+                        <button class="likeButton btn btn-lg"><i class="far fa-thumbs-up"></i></button>
+                      </div>
+                      <div class="col-3">
+                        <button class="dislikeButton btn btn-lg"><i class="far fa-thumbs-down"></i></button>
+                      </div>
+                      <div class="col-3">
+                        <button class="btn btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#comment-section2" aria-expanded="false" aria-controls="comment-section2"><i class="far fa-comments"></i></button>
+                      </div>
+                      <div class="col-3">
+                        <button class="btn btn-lg"><i class="far fa-share-square"></i></button>
+                      </div>
+                    </div>
+                    <div class="collapse" id="comment-section2">
+                      <div class="card card-body">
+                        <div class="input-group my-comment">
+                          <input class="form-control form-control-sm" type="text" placeholder="Make a comment!" aria-label=".form-control-sm example">
+                          <span class="input-group-text" id="basic-addon2">
+                            <button class="btn"><i class="fas fa-microphone-alt"></i></button>
+                            |
+                            <button class="btn"><i class="fas fa-smile-beam"></i></button>
+                          </span>
+                        </div>
+                        <br>
+                        <div class="comments" style="font-size: small;">
+                          <div><a href="#" style="text-decoration: none; color: inherit;"><b>Sidhu Moose Wala</b> <i>@username4321</i></a></div>
+                          <div><i>This is a random comment please like and share!</i></div>
+                        </div>
+                        <br>
+                        <div class="comments" style="font-size: small;">
+                          <div><a href="#" style="text-decoration: none; color: inherit;"><b>Sidhu Moose Wala</b> <i>@username4321</i></a></div>
+                          <div><i>This is a random comment please like and share!</i></div>
+                        </div>
+                        <br>
+                        <div class="comments" style="font-size: small;">
+                          <div><a href="#" style="text-decoration: none; color: inherit;"><b>Sidhu Moose Wala</b> <i>@username4321</i></a></div>
+                          <div><i class="btn btn-sm fas fa-play"></i> <img src="https://i.stack.imgur.com/qWg6J.png" style="height: 20px; width: 250px; object-fit: cover;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="collapse" id="collapseExample">
+                  <div id="notificationToggler" class="btn btn-success text-center" data-bs-toggle="collapse" href="#collapseNested" role="button" aria-expanded="false" aria-controls="collapseNested" style=" width: 100%;">
+                    <span>9</span> Notifications <span><i class="fas fa-chevron-circle-down"></i></span>
+                  </div>
+                  <br>
+                  <div id="links" class="container-fluid btn-group-vertical text-center" style="padding: auto;">
+                    <div class="btn btn-lg text-white-50">HOME</div>
+                    <br>
+                    <div class="btn btn-lg text-white">MOVIES</div>
+                    <br>
+                    <div class="btn btn-lg text-white">BET BATTLE</div>
+                    <br>
+                    <div class="btn btn-lg text-white">PARTICIPATE IN BETS</div>
+                    <br>
+                    <div class="btn btn-lg text-white">BET ARENA</div>
+                    <br>
+                    <div class="btn btn-lg text-white">ABOUT US</div>
+                  </div>
+                  <br>
+                  <div id="collapseNested" class="list-group collapse" style="font-size: small;">
+                      <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">Notification 1</h5>
+                          <small>3 days ago</small>
+                        </div>
+                        <p class="mb-1"><i>Rick Sanchez</i> followed you.</p>
+                        <small><u>Go to profile.</u></small>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">Notification 2</h5>
+                          <small class="text-muted">4 days ago</small>
+                        </div>
+                        <p class="mb-1"><i>Morty</i> bet $50 on your bet.</p>
+                        <small class="text-muted"><u>Go to bet.</u></small>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                          <h5 class="mb-1">Notification 3</h5>
+                          <small class="text-muted">5 days ago</small>
+                        </div>
+                        <p class="mb-1">Some placeholder content in a paragraph.</p>
+                        <small class="text-muted"><u>And some muted small print.</u></small>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Notification 3</h5>
+                            <small class="text-muted">5 days ago</small>
+                          </div>
+                          <p class="mb-1">Some placeholder content in a paragraph.</p>
+                          <small class="text-muted"><u>And some muted small print.</u></small>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Notification 3</h5>
+                            <small class="text-muted">5 days ago</small>
+                          </div>
+                          <p class="mb-1">Some placeholder content in a paragraph.</p>
+                          <small class="text-muted"><u>And some muted small print.</u></small>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Notification 3</h5>
+                            <small class="text-muted">5 days ago</small>
+                          </div>
+                          <p class="mb-1">Some placeholder content in a paragraph.</p>
+                          <small class="text-muted"><u>And some muted small print.</u></small>
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Notification 3</h5>
+                            <small class="text-muted">5 days ago</small>
+                          </div>
+                          <p class="mb-1">Some placeholder content in a paragraph.</p>
+                          <small class="text-muted"><u>And some muted small print.</u></small>
+                      </a>
+                  </div>
+                  <br>
+                </div>
+                <div class="collapse" id="myCliques">
+                  <div class="card" style="width: 100%;">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/dd4ca9a0306c225d1d2452874d5c24ee53299a56b9cbd147a188436bb0693b32._UR1920,1080_RI_.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Clique Name</h5>
+                      <p class="card-text">Members : XXXXX</p>
+                      <a href="#" class="btn btn-primary">Visit Clique</a>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="card" style="width: 100%;">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/dd4ca9a0306c225d1d2452874d5c24ee53299a56b9cbd147a188436bb0693b32._UR1920,1080_RI_.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Clique Name</h5>
+                      <p class="card-text">Members : XXXXX</p>
+                      <a href="#" class="btn btn-primary">Visit Clique</a>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="card" style="width: 100%;">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/dd4ca9a0306c225d1d2452874d5c24ee53299a56b9cbd147a188436bb0693b32._UR1920,1080_RI_.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Clique Name</h5>
+                      <p class="card-text">Members : XXXXX</p>
+                      <a href="#" class="btn btn-primary">Visit Clique</a>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="card" style="width: 100%;">
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/pv-target-images/dd4ca9a0306c225d1d2452874d5c24ee53299a56b9cbd147a188436bb0693b32._UR1920,1080_RI_.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Clique Name</h5>
+                      <p class="card-text">Members : XXXXX</p>
+                      <a href="#" class="btn btn-primary">Visit Clique</a>
+                    </div>
+                  </div>
+                  <br>
+                  <div style="text-align: center;">
+                    <button id="closeMyCliques" class="toggler3 btn-close" aria-label="close" type="button" data-bs-toggle="collapse" data-bs-target="#myCliques" aria-expanded="false" aria-controls="myCliques"></button>
+                  </div>
+                </div>
+                <div class="collapse" id="pinnedBets">
+                  <div class="card" style="width: 100%;">
+                    <img src="/images/publicBet.png">
+                  </div>
+                  <br>
+                  <div class="card" style="width: 100%;">
+                    <img src="/images/publicBet.png">
+                  </div>
+                  <br>
+                  <div class="card" style="width: 100%;">
+                    <img src="/images/publicBet.png">
+                  </div>
+                  <br>
+                  <div class="card" style="width: 100%;">
+                    <img src="/images/publicBet.png">
+                  </div>
+                  <br>
+                  <div style="text-align: center;">
+                    <button id="closePinnedBets" class="toggler3 btn-close" aria-label="close" type="button" data-bs-toggle="collapse" data-bs-target="#pinnedBets" aria-expanded="false" aria-controls="pinnedBets"></button>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-2 text-center" style="padding: 0;">
+                    <div class="btn-group dropup">
+                      <button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 50%;">
+                        <i class="fas fa-chevron-circle-up"></i>
+                      </button>
+                      <div class="dropdown-menu p-2 text-muted">
+                        <div class="row">
+                          <button id="openMyCliques" class="toggler3 btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#myCliques" aria-expanded="false" aria-controls="myCliques">My Cliques</button>
+                        </div>
+                        <div class="row">
+                          <button id="openPinnedBets" class="toggler3 btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#pinnedBets" aria-expanded="false" aria-controls="pinnedBets">Pinned Bets</button>
+                        </div>
+                        <div class="row">
+                          <button id="openFeed" class="toggler btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">My Feed</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-7"></div>
+                  <div class="col-3" style="padding: 0;">
+                    <button class="btn btn-md" style="padding: 0;">
+                      <i class="fas fa-power-off"></i>
+                      <span>Log Out</span>
+                    </button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/js/sidebar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+</body>
+</html>
